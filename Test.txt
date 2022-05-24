@@ -1,0 +1,38 @@
+#include <iostream> 
+#include <vector>
+#include <ctime> 
+#include <sstream>
+ 
+using namespace std; 
+
+int suits[4]={1, 2, 3, 4};
+int faces[12]={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+class Card  {  
+ int face,suit;
+Card(int face,int suit) 
+ {  this->face=face;  this->suit=suit;  } 
+ string toString()
+  {string nameSuit; 
+ string nameFace;  
+if (suit == 1)
+ nameSuit = "Hearts";
+  else if(suit == 2)  nameSuit = "Diamonds";
+  else if(suit == 3)  nameSuit = "Spades";
+  else if (suit == 4) nameSuit = "Clubs"; 
+
+ if (face == 1)nameFace = "Ace";  
+ else if(face == 10) nameFace = "Jack"; 
+ else if(face == 11) nameFace = "Queen"; 
+ else if(face == 12) nameFace = "King"; 
+else {  for (int i = 2; i < 10; i++)  {  nameFace = "" + i; }
+  return nameFace+" of "+nameSuit;  } 
+ }; 
+
+ class DeckOfCards  {  private:  vector<Card> deck; 
+ int currentCard,index;
+  public:  DeckOfCards() 
+ /*create deck*/  {  currentCard=1;  for(int i=0;i<13;i++) 
+ for(int k=0;k<4;k++)  {  Card card(i,k);  deck.push_back(card);  currentCard++;  }  }  void shuffle()  /*shuffle the deck*/  {  for(int i=0;i<52;i++)  { index=rand()%52+1;
+ Card holder=deck[index];
+ deck[index]=deck[i];  deck[i]=holder;  }  }  Card dealCard()  /*deal the shuffled cards*/  { Card temporary = deck[currentCard];  currentCard--;  return temporary; 092 } 093 bool moreCards() 094 { 095 if(currentCard == 52) 096 return false; 097 else 098 return true; 099 } 100 101 }; 102 103 int main () 104 /*main function*/ 105 { 106 DeckOfCards deck; 107 deck.shuffle(); 108 109 for( int i = 0; i < 52; i++) 110 {
+ cout<<DeckOfCards.deck[i].toString()<<endl;  }   };  }
